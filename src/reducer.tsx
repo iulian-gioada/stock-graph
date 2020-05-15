@@ -11,5 +11,7 @@ export const reducer = (state: IAppState, action: IAction) => {
             return { ...state, points: [], loading: true }
         case ACTIONS.SET_ERROR:
             return { ...state, points: [], loading: false, error: action.error }
+        case ACTIONS.RESET_APP:
+            return { ...action.initialState }
     }
 };

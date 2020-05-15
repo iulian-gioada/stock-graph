@@ -73,3 +73,7 @@ export type IAction =
     type: ACTIONS.SET_ERROR,
     error: string
 }
+| {
+    type: ACTIONS.RESET_APP,
+    initialState: IAppState
+}

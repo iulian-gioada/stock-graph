@@ -33,7 +33,12 @@ const App: React.FC<IAppProps> = () => {
         dispatch({ type: ACTIONS.SET_ERROR, error: e.message })
       }
     }
-    loadData()
+
+    if (filters.symbol) {
+      loadData()
+    } else {
+      dispatch({type: ACTIONS.RESET_APP, initialState})
+    }
   }, [filters])
 
   return (
