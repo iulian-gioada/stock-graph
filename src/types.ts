@@ -17,8 +17,8 @@ export interface IData {
     }
 }
 
-export interface AppProps {}
+export interface IAppProps {}
 
-export interface StockGraphProps {
+export interface IStockGraphProps {
     data: IPoint[]
 }
