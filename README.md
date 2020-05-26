@@ -1,3 +1,10 @@
+## Simple Stock chart
+
+This project was bootstrapped with `create-react-app` using the typescript version of it.<br />
+It uses the RapidApi YahooFinanceApi to fetch historic information about the provided symbol. https://rapidapi.com/apidojo/api/yahoo-finance1<br />
+To use it you have to put your api keys in the .env file in order to load data from the server.
+Alternatively there is a mockData.json and a MockFetch that can be used for simple demo purpose.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

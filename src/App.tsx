@@ -7,7 +7,9 @@ import Loading from './Loading'
 import { IAppProps, IAppState, IFilters } from './types'
 import YahooFinanceApi from './YahooFinanceApi'
 import { reducer } from './reducer'
-import MockFetch from './MockFetch'
+// use the MockFetch if you don't want to load live data from RapidApi
+// import MockFetch from './MockFetch' 
+
 
 const initialState: IAppState = {
   points: [],
