@@ -9,16 +9,17 @@ import YahooFinanceApi from './YahooFinanceApi'
 import { reducer } from './reducer'
 import MockFetch from './MockFetch'
 
-const App: React.FC<IAppProps> = () => {
-  const initialState: IAppState = {
-    points: [],
-    filters: {
-      symbol: '',
-    },
-    loading: false,
-    error: '',
-  }
+const initialState: IAppState = {
+  points: [],
+  filters: {
+    symbol: '',
+    range: '5d',
+  },
+  loading: false,
+  error: '',
+}
 
+const App: React.FC<IAppProps> = () => {
   const [{ points, filters, loading, error }, dispatch] = useReducer(reducer, initialState)
   const { symbol } = filters
   const applyFilters = (filters: IFilters) => dispatch({ type: ACTIONS.SET_FILTERS, filters })
@@ -27,7 +28,7 @@ const App: React.FC<IAppProps> = () => {
     const loadData = async () => {
       try {
         dispatch({ type: ACTIONS.LOAD_POINTS })
-        const points = await new YahooFinanceApi(MockFetch).getChartData(filters)
+        const points = await new YahooFinanceApi().getChartData(filters)
         dispatch({ type: ACTIONS.SET_POINTS, points })
       } catch (e) {
         dispatch({ type: ACTIONS.SET_ERROR, error: e.message })
@@ -37,7 +38,7 @@ const App: React.FC<IAppProps> = () => {
     if (filters.symbol) {
       loadData()
     } else {
-      dispatch({type: ACTIONS.RESET_APP, initialState})
+      dispatch({ type: ACTIONS.RESET_APP, initialState })
     }
   }, [filters])
 
@@ -49,7 +50,11 @@ const App: React.FC<IAppProps> = () => {
       <div className="App-content">
         <div className="App-filters"><Filters filters={filters} applyFilters={applyFilters} /></div>
         <div className="App-graph">
-          {loading ? <Loading symbol={symbol} /> : (error ? (<div> {error} </div>) : <StockGraph graphData={points} symbol={symbol} />)}
+          {loading ?
+            <Loading symbol={symbol} />
+            : (error ?
+              (<div> {error} </div>)
+              : <StockGraph graphData={points} symbol={symbol} />)}
         </div>
       </div>
     </div>

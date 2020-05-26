@@ -18,3 +18,25 @@
   grid-template-columns: 1fr 7fr;
   grid-gap: 10px;
 }
+
+.App-filters {
+  border-right: 1px solid #282c34;
+  height: 100vh;
+  padding: 16px;
+  width: 200px;
+}
+
+.Graph-section {
+  text-align: center;
+}
+
+.Graph-section h3,
+.Graph-section p,
+.App-graph p {
+  max-width: unset;
+}
+
+.Filters .Filter {
+  text-align: left;
+  margin-bottom: 16px;
+}
